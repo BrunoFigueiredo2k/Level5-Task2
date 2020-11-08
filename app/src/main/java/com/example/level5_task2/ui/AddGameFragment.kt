@@ -1,4 +1,4 @@
-package com.example.level5_task1.ui
+package com.example.level5_task2.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.level5_task1.R
-import com.example.level5_task1.model.Note
+import com.example.level5_task2.R
+import com.example.level5_task2.model.Note
 import kotlinx.android.synthetic.main.fragment_add_reminder.*
 
 class AddNoteFragment : Fragment() {

@@ -1,8 +1,8 @@
-package com.example.level5_task1.dao
+package com.example.level5_task2.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.level5_task1.model.Note
+import com.example.level5_task2.model.Note
 
 @Dao
 interface NoteDao {

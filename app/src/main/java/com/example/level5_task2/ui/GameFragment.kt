@@ -1,4 +1,4 @@
-package com.example.level5_task1.ui
+package com.example.level5_task2.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.level5_task1.R
-import com.example.level5_task1.model.Note
+import com.example.level5_task2.R
+import com.example.level5_task2.model.Note
 import kotlinx.android.synthetic.main.fragment_reminders.*
 
 /**

@@ -1,16 +1,16 @@
-package com.example.level5_task1.repository
+package com.example.level5_task2.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.level5_task1.dao.NotepadDao
-import com.example.level5_task1.database.ReminderRoomDatabase
-import com.example.level5_task1.model.Note
+import com.example.level5_task2.dao.GameDao
+import com.example.level5_task2.database.ReminderRoomDatabase
+import com.example.level5_task2.model.Note
 
 
 public class NoteRepository(context: Context) {
 
-    private var reminderDao: NotepadDao
+    private var reminderDao: GameDao
 
     init {
         val reminderRoomDatabase = ReminderRoomDatabase.getDatabase(context)

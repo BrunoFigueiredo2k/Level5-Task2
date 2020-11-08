@@ -1,4 +1,4 @@
-package com.example.level5_task1.model
+package com.example.level5_task2.model
 
 import androidx.room.*
 
