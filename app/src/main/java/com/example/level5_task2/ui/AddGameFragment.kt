@@ -11,11 +11,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.level5_task2.R
 import com.example.level5_task2.model.Game
 import kotlinx.android.synthetic.main.fragment_add_game.*
+import java.util.*
 
 class AddGameFragment : Fragment() {
 
     // TODO: fix error here
-//    private val viewModel: NotepadViewModel by viewModels()
+    private val viewModel: GameViewmodel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,7 @@ class AddGameFragment : Fragment() {
 
         // Check if submitted unput is not empty
         if (title.isNotBlank() && platform.isNotBlank() && day.isNotBlank() && month.isNotBlank() && year.isNotBlank()){
-//            viewModel.insertGame(Game(gameText))
+            viewModel.insertGame(Game(title, platform, Date(day.toInt(), month.toInt(), year.toInt())))
 
             // Destroy current fragment to go back to home fragment (gamesFragment.kt)
             findNavController().popBackStack()
