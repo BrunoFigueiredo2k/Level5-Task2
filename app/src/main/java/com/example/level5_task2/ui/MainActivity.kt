@@ -1,4 +1,4 @@
-package com.example.level5_task1.ui
+package com.example.level5_task2.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.example.level5_task1.R
+import com.example.level5_task2.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener {
             navController.navigate(
-                R.id.action_remindersFragment_to_addReminderFragment
+                R.id.action_gamesFragment_to_addgameFragment
             )
         }
         fabToggler()
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun fabToggler() {
         navController.addOnDestinationChangedListener { _,       destination, _ ->
-            if (destination.id in arrayOf(R.id.addReminderFragment)) {
+            if (destination.id in arrayOf(R.id.addgameFragment)) {
                 fab.hide()
             } else {
                 fab.show()

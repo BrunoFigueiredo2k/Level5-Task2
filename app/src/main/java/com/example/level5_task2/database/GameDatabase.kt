@@ -5,33 +5,33 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.level5_task2.dao.GameDao
-import com.example.level5_task2.model.Note
+import com.example.level5_task2.model.Game
 
-@Database(entities = [Note::class], version = 1, exportSchema = false)
-abstract class ReminderRoomDatabase : RoomDatabase() {
+@Database(entities = [Game::class], version = 1, exportSchema = false)
+abstract class GameRoomDatabase : RoomDatabase() {
 
-    abstract fun reminderDao(): GameDao
+    abstract fun gameDao(): GameDao
 
     companion object {
-        private const val DATABASE_NAME = "REMINDER_DATABASE"
+        private const val DATABASE_NAME = "GAME_DATABASE"
 
         @Volatile
-        private var reminderRoomDatabaseInstance: ReminderRoomDatabase? = null
+        private var GameRoomDatabaseInstance: GameRoomDatabase? = null
 
-        fun getDatabase(context: Context): ReminderRoomDatabase? {
-            if (reminderRoomDatabaseInstance == null) {
-                synchronized(ReminderRoomDatabase::class.java) {
-                    if (reminderRoomDatabaseInstance == null) {
-                        reminderRoomDatabaseInstance = Room.databaseBuilder(
+        fun getDatabase(context: Context): GameRoomDatabase? {
+            if (GameRoomDatabaseInstance == null) {
+                synchronized(GameRoomDatabase::class.java) {
+                    if (GameRoomDatabaseInstance == null) {
+                        GameRoomDatabaseInstance = Room.databaseBuilder(
                             context.applicationContext,
-                            ReminderRoomDatabase::class.java,
+                            GameRoomDatabase::class.java,
                             DATABASE_NAME
                         )
                             .build()
                     }
                 }
             }
-            return reminderRoomDatabaseInstance
+            return GameRoomDatabaseInstance
         }
     }
 

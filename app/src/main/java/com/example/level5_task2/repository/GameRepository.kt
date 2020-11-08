@@ -4,33 +4,33 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.level5_task2.dao.GameDao
-import com.example.level5_task2.database.ReminderRoomDatabase
-import com.example.level5_task2.model.Note
+import com.example.level5_task2.database.GameRoomDatabase
+import com.example.level5_task2.model.Game
 
 
-public class NoteRepository(context: Context) {
+public class GameRepository(context: Context) {
 
-    private var reminderDao: GameDao
+    private var gameDao: GameDao
 
     init {
-        val reminderRoomDatabase = ReminderRoomDatabase.getDatabase(context)
-        reminderDao = reminderRoomDatabase!!.reminderDao()
+        val GameRoomDatabase = GameRoomDatabase.getDatabase(context)
+        gameDao = GameRoomDatabase!!.gameDao()
     }
 
-    fun getAllReminders() : LiveData<List<Note>> {
-        return reminderDao?.getAllReminders() ?: MutableLiveData(emptyList())
+    fun getAllGames() : LiveData<List<Game>> {
+        return gameDao?.getAllGames() ?: MutableLiveData(emptyList())
     }
 
-    suspend fun insertReminder(reminder: Note) {
-        reminderDao.insertReminder(reminder)
+    suspend fun insertGame(game: Game) {
+        gameDao.insertGame(game)
     }
 
-    suspend fun deleteReminder(reminder: Note) {
-        reminderDao.deleteReminder(reminder)
+    suspend fun deleteGame(game: Game) {
+        gameDao.deleteGame(game)
     }
 
 
-    suspend fun updateReminder(reminder: Note) {
-        reminderDao.updateReminder(reminder)
+    suspend fun updateGame(game: Game) {
+        gameDao.updateGame(game)
     }
 }

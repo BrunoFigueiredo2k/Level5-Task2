@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/remindersFragment">
+    app:startDestination="@id/gamesFragment">
 
     <fragment
-        android:id="@+id/remindersFragment"
-        android:name="com.example.level5_task1.ui.NotepadFragment"
-        android:label="fragment_reminders"
-        tools:layout="@layout/fragment_reminders" >
+        android:id="@+id/gamesFragment"
+        android:name="com.example.level5_task2.ui.GameFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" >
         <action
-            android:id="@+id/action_remindersFragment_to_addReminderFragment"
-            app:destination="@id/addReminderFragment" />
+            android:id="@+id/action_gamesFragment_to_addgameFragment"
+            app:destination="@id/addgameFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addReminderFragment"
-        android:name="com.example.level5_task1.ui.AddNoteFragment"
-        android:label="fragment_add_reminder"
-        tools:layout="@layout/fragment_add_reminder" />
+        android:id="@+id/addgameFragment"
+        android:name="com.example.level5_task2.ui.AddGameFragment"
+        android:label="fragment_add_game"
+        tools:layout="@layout/fragment_add_game" />
 </navigation>

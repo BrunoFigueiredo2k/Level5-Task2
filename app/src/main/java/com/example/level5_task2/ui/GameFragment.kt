@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level5_task2.R
-import com.example.level5_task2.model.Note
-import kotlinx.android.synthetic.main.fragment_reminders.*
+import com.example.level5_task2.model.Game
+import kotlinx.android.synthetic.main.fragment_games.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class NotepadFragment : Fragment() {
-    private val reminders = arrayListOf<Note>()
-    private val reminderAdapter =
-        NotepadAdapter(reminders)
+class GameFragment : Fragment() {
+    private val games = arrayListOf<Game>()
+    private val gameAdapter =
+        NotepadAdapter(games)
 
     private val viewModel: NotepadViewModel by viewModels()
 
@@ -30,7 +30,7 @@ class NotepadFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reminders, container, false)
+        return inflater.inflate(R.layout.fragment_games, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,24 +38,24 @@ class NotepadFragment : Fragment() {
 
         initViews()
 
-        observeAddReminderResult()
+        observeAddgameResult()
     }
 
     private fun initViews() {
         // Initialize the recycler view with a linear layout manager, adapter
-        rvReminders.layoutManager =
+        rvgames.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        rvReminders.adapter = reminderAdapter
-        rvReminders.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
-        observeAddReminderResult()
-        createItemTouchHelper().attachToRecyclerView(rvReminders)
+        rvgames.adapter = gameAdapter
+        rvgames.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+        observeAddgameResult()
+        createItemTouchHelper().attachToRecyclerView(rvgames)
     }
 
-    private fun observeAddReminderResult() {
-        viewModel.reminders.observe(viewLifecycleOwner, Observer { reminders ->
-            this@NotepadFragment.reminders.clear()
-            this@NotepadFragment.reminders.addAll(reminders)
-            reminderAdapter.notifyDataSetChanged()
+    private fun observeAddgameResult() {
+        viewModel.games.observe(viewLifecycleOwner, Observer { games ->
+            this@GameFragment.games.clear()
+            this@GameFragment.games.addAll(games)
+            gameAdapter.notifyDataSetChanged()
         })
     }
 
@@ -83,10 +83,10 @@ class NotepadFragment : Fragment() {
             // Callback triggered when a user swiped an item.
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                // Store reminder to be deleted in variable (swiped reminder)
-                val reminderToDelete = reminders[position]
+                // Store game to be deleted in variable (swiped game)
+                val gameToDelete = games[position]
 
-                viewModel.deleteReminder(reminderToDelete)
+                viewModel.deleteGame(gameToDelete)
             }
         }
         return ItemTouchHelper(callback)

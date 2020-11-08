@@ -2,21 +2,21 @@ package com.example.level5_task2.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.level5_task2.model.Note
+import com.example.level5_task2.model.Game
 
 @Dao
-interface NoteDao {
+interface GameDao {
 
-    @Query("SELECT * FROM reminderTable")
-    fun getAllReminders(): LiveData<List<Note>>
+    @Query("SELECT * FROM gameTable")
+    fun getAllGames(): LiveData<List<Game>>
 
     @Insert
-    suspend fun insertReminder(reminder: Note)
+    suspend fun insertGame(game: Game)
 
     @Delete
-    suspend fun deleteReminder(reminder: Note)
+    suspend fun deleteGame(game: Game)
 
     @Update
-    suspend fun updateReminder(reminder: Note)
+    suspend fun updateGame(game: Game)
 
 }

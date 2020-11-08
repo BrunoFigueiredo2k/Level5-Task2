@@ -9,42 +9,46 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.level5_task2.R
-import com.example.level5_task2.model.Note
-import kotlinx.android.synthetic.main.fragment_add_reminder.*
+import com.example.level5_task2.model.Game
+import kotlinx.android.synthetic.main.fragment_add_game.*
 
-class AddNoteFragment : Fragment() {
+class AddGameFragment : Fragment() {
 
-    private val viewModel: NotepadViewModel by viewModels()
+    // TODO: fix error here
+//    private val viewModel: NotepadViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_reminder, container, false)
+        return inflater.inflate(R.layout.fragment_add_game, container, false)   
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnAddReminder.setOnClickListener {
-            onAddReminder()
+        btnAddGame.setOnClickListener {
+            onAddgame()
         }
     }
 
-    private fun onAddReminder(){
+    private fun onAddgame(){
         // Get the user input
-        val reminderText = etReminderName.text.toString()
+        val title = etTitle.text.toString()
+        val platform = etPlatform.text.toString()
+        val day = etDay.text.toString()
+        val month = etMonth.text.toString()
+        val year = etYear.text.toString()
 
         // Check if submitted unput is not empty
-        if (reminderText.isNotBlank()){
-            viewModel.insertReminder(Note(reminderText))
+        if (title.isNotBlank() && platform.isNotBlank() && day.isNotBlank() && month.isNotBlank() && year.isNotBlank()){
+//            viewModel.insertGame(Game(gameText))
 
-            // Destroy current fragment to go back to home fragment (RemindersFragment.kt)
+            // Destroy current fragment to go back to home fragment (gamesFragment.kt)
             findNavController().popBackStack()
         } else {
-            Toast.makeText(activity,
-                R.string.not_valid_reminder, Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, R.string.no_input, Toast.LENGTH_SHORT).show()
         }
     }
 }
