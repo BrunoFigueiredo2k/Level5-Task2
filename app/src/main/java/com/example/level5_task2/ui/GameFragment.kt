@@ -20,10 +20,9 @@ import kotlinx.android.synthetic.main.fragment_games.*
  */
 class GameFragment : Fragment() {
     private val games = arrayListOf<Game>()
-    private val gameAdapter =
-        NotepadAdapter(games)
+    private val gameAdapter = GameAdapter(games)
 
-    private val viewModel: NotepadViewModel by viewModels()
+    private val viewModel: GameViewmodel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -43,22 +42,21 @@ class GameFragment : Fragment() {
 
     private fun initViews() {
         // Initialize the recycler view with a linear layout manager, adapter
-        rvgames.layoutManager =
+        rvGames.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        rvgames.adapter = gameAdapter
-        rvgames.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
+        rvGames.adapter = gameAdapter
+        rvGames.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         observeAddgameResult()
-        createItemTouchHelper().attachToRecyclerView(rvgames)
+        createItemTouchHelper().attachToRecyclerView(rvGames)
     }
 
     private fun observeAddgameResult() {
-        viewModel.games.observe(viewLifecycleOwner, Observer { games ->
+        viewModel.games.observe(viewLifecycleOwner, Observer { reminders ->
             this@GameFragment.games.clear()
-            this@GameFragment.games.addAll(games)
+            this@GameFragment.games.addAll(reminders)
             gameAdapter.notifyDataSetChanged()
         })
     }
-
 
     /**
      * Create a touch helper to recognize when a user swipes an item from a recycler view.
