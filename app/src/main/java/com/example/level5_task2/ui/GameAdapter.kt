@@ -1,5 +1,6 @@
 package com.example.level5_task2.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,11 @@ class GameAdapter(private val games: List<Game>) : RecyclerView.Adapter<GameAdap
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("SetTextI18n")
         fun databind(game: Game) {
             itemView.tvTitle.text = game.title
             itemView.tvPlatform.text = game.platform
-            itemView.tvDateRelease.text = game.releaseDate.toString()
+            itemView.tvDateRelease.text = "Release: " + game.releaseDate.toString()
         }
     }
 

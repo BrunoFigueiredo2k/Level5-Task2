@@ -1,10 +1,12 @@
 package com.example.level5_task2.ui
 
+import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level5_task2.R
 import com.example.level5_task2.model.Game
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_games.*
 
 /**
@@ -38,6 +41,10 @@ class GameFragment : Fragment() {
         initViews()
 
         observeAddgameResult()
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Add Game"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun initViews() {

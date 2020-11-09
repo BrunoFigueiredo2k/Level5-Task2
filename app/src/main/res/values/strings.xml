@@ -2,6 +2,10 @@
     <string name="app_name">Level5-Task2</string>
     <string name="action_settings">Settings</string>
 
+    <string name="add_game_title">Add Game</string>
+    <string name="removed_from_list">Removed from list</string>
+    <string name="undo">Undo</string>
+
     <!-- Strings app -->
     <string name="title">Title</string>
     <string name="platform">Platform</string>
@@ -11,4 +15,7 @@
 
     <!-- Error strings -->
     <string name="no_input">Empty fields!</string>
+    <string name="day_error">Filled in day is incorrect! Must be between 1-31.</string>
+    <string name="month_error">Filled in month is incorrect! Must be between 1-12.</string>
+    <string name="year_error">Filled in year is incorrect! Can\'t be smaller than 1 or higher than the current year.</string>
 </resources>

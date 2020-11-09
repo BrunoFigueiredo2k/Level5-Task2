@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.level5_task2.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_add_game.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
         fabToggler()
+
+        this.supportActionBar?.title = "Add Game"
 
     }
 
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.delete_all -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
