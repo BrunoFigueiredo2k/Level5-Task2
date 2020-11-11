@@ -1,12 +1,11 @@
 package com.example.level5_task2.ui
 
-import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level5_task2.R
 import com.example.level5_task2.model.Game
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_games.*
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -42,9 +41,30 @@ class GameFragment : Fragment() {
 
         observeAddgameResult()
 
+        // Add title to add game fragment with back buttton enabled
         (activity as AppCompatActivity).supportActionBar?.title = "Add Game"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
+
+        // Add title to add home activity with back buttton disabled
+        (activity as MainActivity).supportActionBar?.title = "Game Backlog"
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.menu_main, menu)
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    // On click delete floating action button delete all games from history
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var id = item.itemId
+        if (id == R.id.delete_all) {
+            viewModel.removeAllGames()
+            Toast.makeText(context, "Deleted all items", LENGTH_SHORT).show()
+        }
+        return true
     }
 
     private fun initViews() {

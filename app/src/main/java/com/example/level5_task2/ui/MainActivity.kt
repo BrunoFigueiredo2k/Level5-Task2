@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         }
         fabToggler()
 
-        this.supportActionBar?.title = "Add Game"
-
     }
 
     private fun fabToggler() {

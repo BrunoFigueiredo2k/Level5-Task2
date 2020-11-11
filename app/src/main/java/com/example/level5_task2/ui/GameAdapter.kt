@@ -1,13 +1,16 @@
 package com.example.level5_task2.ui
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.level5_task2.R
 import com.example.level5_task2.model.Game
 import kotlinx.android.synthetic.main.item_game.view.*
+import java.time.format.DateTimeFormatter
 
 class GameAdapter(private val games: List<Game>) : RecyclerView.Adapter<GameAdapter.ViewHolder>(){
 
@@ -29,6 +32,7 @@ class GameAdapter(private val games: List<Game>) : RecyclerView.Adapter<GameAdap
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         @SuppressLint("SetTextI18n")
         fun databind(game: Game) {
             itemView.tvTitle.text = game.title

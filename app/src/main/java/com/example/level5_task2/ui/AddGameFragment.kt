@@ -1,9 +1,7 @@
 package com.example.level5_task2.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,7 +14,6 @@ import java.util.*
 
 class AddGameFragment : Fragment() {
 
-    // TODO: fix error here
     private val viewModel: GameViewmodel by viewModels()
 
     override fun onCreateView(
@@ -50,14 +47,19 @@ class AddGameFragment : Fragment() {
         val month = etMonth.text.toString()
         val year = etYear.text.toString()
 
+        // Date values
+        val daysInMonth = 31
+        val monthInYear = 12
+        val currentYear = 2020
+
         // Check if submitted unput is not empty
         if (title.isBlank() && platform.isBlank() && day.isBlank() && month.isBlank() && year.isBlank()){
             Toast.makeText(activity, R.string.no_input, Toast.LENGTH_SHORT).show()
-        } else if (day.toInt() < 1 || day.toInt() > 31){
+        } else if (day.toInt() < 1 || day.toInt() > daysInMonth){
             Toast.makeText(activity, R.string.day_error, Toast.LENGTH_SHORT).show()
-        } else if (month.toInt() < 1 || month.toInt() > 12){
+        } else if (month.toInt() < 1 || month.toInt() > monthInYear){
             Toast.makeText(activity, R.string.month_error, Toast.LENGTH_SHORT).show()
-        } else if (year.toInt() < 1 || year.toInt() > 2020){
+        } else if (year.toInt() < 1 || year.toInt() > currentYear){
             Toast.makeText(activity, R.string.year_error, Toast.LENGTH_SHORT).show()
         }else {
             val cal = Calendar.getInstance()

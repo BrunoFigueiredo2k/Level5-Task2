@@ -21,6 +21,10 @@ public class GameRepository(context: Context) {
         return gameDao?.getAllGames() ?: MutableLiveData(emptyList())
     }
 
+    fun removeAllGames(){
+        return gameDao?.removeAllGames()
+    }
+
     suspend fun insertGame(game: Game) {
         gameDao.insertGame(game)
     }
@@ -28,7 +32,6 @@ public class GameRepository(context: Context) {
     suspend fun deleteGame(game: Game) {
         gameDao.deleteGame(game)
     }
-
 
     suspend fun updateGame(game: Game) {
         gameDao.updateGame(game)

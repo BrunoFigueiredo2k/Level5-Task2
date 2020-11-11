@@ -8,5 +8,6 @@
         android:icon="@drawable/ic_bin"
         android:tint="@color/colorWhite"
         app:showAsAction="ifRoom"
+        android:visible="false"
         android:title="Delete all items" />
 </menu>
