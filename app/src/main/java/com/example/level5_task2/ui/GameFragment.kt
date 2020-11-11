@@ -55,6 +55,9 @@ class GameFragment : Fragment() {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.menu_main, menu)
         super.onCreateOptionsMenu(menu, inflater);
+
+        val deleteAllBtn: MenuItem = menu.findItem(R.id.delete_all)
+        deleteAllBtn.isVisible = true
     }
 
     // On click delete floating action button delete all games from history
