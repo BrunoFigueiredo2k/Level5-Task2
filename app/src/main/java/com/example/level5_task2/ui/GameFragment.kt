@@ -1,6 +1,7 @@
 package com.example.level5_task2.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
@@ -54,18 +55,18 @@ class GameFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.menu_main, menu)
-        super.onCreateOptionsMenu(menu, inflater);
-
         val deleteAllBtn: MenuItem = menu.findItem(R.id.delete_all)
         deleteAllBtn.isVisible = true
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     // On click delete floating action button delete all games from history
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var id = item.itemId
-        if (id == R.id.delete_all) {
+        if (item.itemId == R.id.delete_all) {
             viewModel.removeAllGames()
             Toast.makeText(context, "Deleted all items", LENGTH_SHORT).show()
+            Log.d("msg", "clicked")
         }
         return true
     }

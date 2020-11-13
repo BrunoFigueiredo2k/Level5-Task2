@@ -1,7 +1,10 @@
 package com.example.level5_task2.ui
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -31,12 +34,22 @@ class AddGameFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_add_game, container, false)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home ->
+                true
+            else ->
+                findNavController().popBackStack()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         btnAddGame.setOnClickListener {
             onAddgame()
         }
+
     }
 
     private fun onAddgame(){
