@@ -8,7 +8,7 @@ import com.example.level5_task2.model.Game
 interface GameDao {
 
     // Select all games from db with newest games first
-    @Query("SELECT * FROM gameTable ORDER BY releaseDate DESC")
+    @Query("SELECT * FROM gameTable ORDER BY releaseYear DESC, releaseMonth DESC, releaseDay DESC")
     fun getAllGames(): LiveData<List<Game>>
 
     // Delete all games from list

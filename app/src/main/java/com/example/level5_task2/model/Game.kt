@@ -13,8 +13,14 @@ data class Game(
     @ColumnInfo(name = "platform")
     var platform: String,
 
-    @ColumnInfo(name = "releaseDate")
-    var releaseDate: Date,
+    @ColumnInfo(name = "releaseDay")
+    var releaseDay: String,
+
+    @ColumnInfo(name = "releaseMonth")
+    var releaseMonth: String,
+
+    @ColumnInfo(name = "releaseYear")
+    var releaseYear: String,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

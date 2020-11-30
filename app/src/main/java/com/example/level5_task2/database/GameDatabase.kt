@@ -25,8 +25,7 @@ class Converters {
     }
 }
 
-
-@Database(entities = [Game::class], version = 1, exportSchema = false)
+@Database(entities = [Game::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class GameRoomDatabase : RoomDatabase() {
 
@@ -52,7 +51,7 @@ abstract class GameRoomDatabase : RoomDatabase() {
                                     super.onCreate(db)
                                     INSTANCE?.let { database ->
                                         CoroutineScope(Dispatchers.IO).launch {
-                                            database.gameDao().insertGame(Game("Title", "", Date()))
+                                            database.gameDao().insertGame(Game("Title", "", "", "", ""))
                                         }
                                     }
                                 }

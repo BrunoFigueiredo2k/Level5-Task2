@@ -75,16 +75,26 @@ class AddGameFragment : Fragment() {
         } else if (year.toInt() < 1 || year.toInt() > currentYear){
             Toast.makeText(activity, R.string.year_error, Toast.LENGTH_SHORT).show()
         }else {
-            val cal = Calendar.getInstance()
-            cal[Calendar.YEAR] = year.toInt()
-            cal[Calendar.MONTH] = month.toInt()
-            cal[Calendar.DAY_OF_MONTH] = day.toInt()
-            val releaseDate = cal.time
-
-            viewModel.insertGame(Game(title, platform, releaseDate))
+            // Insert game into db
+            viewModel.insertGame(Game(title, platform, day, displayMonthAsWord(month), year))
 
             // Destroy current fragment to go back to home fragment (gamesFragment.kt)
             findNavController().popBackStack()
         }
+    }
+
+    private fun displayMonthAsWord (month: String): String {
+        var stringMonth = ""
+        var arrayMonths = arrayOf(
+            "January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+
+        // Loop through all cases
+        for (i in 1..12){
+            when (month){
+                i.toString() -> stringMonth = arrayMonths.elementAt(i)
+            }
+        }
+
+        return stringMonth
     }
 }
